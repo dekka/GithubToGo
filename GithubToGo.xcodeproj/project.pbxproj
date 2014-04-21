@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		009AABE91905B0480003DEE3 /* RSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABE81905B0480003DEE3 /* RSWebViewController.m */; };
+		009AABEC1905B2E60003DEE3 /* RSRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABEB1905B2E60003DEE3 /* RSRepo.m */; };
 		00A4782819057D3B0041584F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782719057D3B0041584F /* Foundation.framework */; };
 		00A4782A19057D3B0041584F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782919057D3B0041584F /* CoreGraphics.framework */; };
 		00A4782C19057D3B0041584F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782B19057D3B0041584F /* UIKit.framework */; };
@@ -21,6 +23,10 @@
 		00A4784919057D3B0041584F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782B19057D3B0041584F /* UIKit.framework */; };
 		00A4785119057D3B0041584F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00A4784F19057D3B0041584F /* InfoPlist.strings */; };
 		00A4785319057D3B0041584F /* GithubToGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4785219057D3B0041584F /* GithubToGoTests.m */; };
+		00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4785D19057DB10041584F /* RSRootMenuViewController.m */; };
+		00A4786119057E8B0041584F /* RSReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786019057E8B0041584F /* RSReposViewController.m */; };
+		00A4786419057EC80041584F /* RSUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786319057EC80041584F /* RSUsersViewController.m */; };
+		00A4786719057ED30041584F /* RSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786619057ED30041584F /* RSSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009AAB56190594520003DEE3 /* RSBurgerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSBurgerProtocol.h; sourceTree = "<group>"; };
+		009AABE71905B0480003DEE3 /* RSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWebViewController.h; sourceTree = "<group>"; };
+		009AABE81905B0480003DEE3 /* RSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWebViewController.m; sourceTree = "<group>"; };
+		009AABEA1905B2E60003DEE3 /* RSRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRepo.h; sourceTree = "<group>"; };
+		009AABEB1905B2E60003DEE3 /* RSRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRepo.m; sourceTree = "<group>"; };
 		00A4782419057D3B0041584F /* GithubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A4782719057D3B0041584F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00A4782919057D3B0041584F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +64,14 @@
 		00A4784E19057D3B0041584F /* GithubToGoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GithubToGoTests-Info.plist"; sourceTree = "<group>"; };
 		00A4785019057D3B0041584F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00A4785219057D3B0041584F /* GithubToGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubToGoTests.m; sourceTree = "<group>"; };
+		00A4785C19057DB10041584F /* RSRootMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRootMenuViewController.h; sourceTree = "<group>"; };
+		00A4785D19057DB10041584F /* RSRootMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRootMenuViewController.m; sourceTree = "<group>"; };
+		00A4785F19057E8B0041584F /* RSReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSReposViewController.h; sourceTree = "<group>"; };
+		00A4786019057E8B0041584F /* RSReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSReposViewController.m; sourceTree = "<group>"; };
+		00A4786219057EC80041584F /* RSUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUsersViewController.h; sourceTree = "<group>"; };
+		00A4786319057EC80041584F /* RSUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUsersViewController.m; sourceTree = "<group>"; };
+		00A4786519057ED30041584F /* RSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchViewController.h; sourceTree = "<group>"; };
+		00A4786619057ED30041584F /* RSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +134,23 @@
 				00A4783619057D3B0041584F /* RSAppDelegate.h */,
 				00A4783719057D3B0041584F /* RSAppDelegate.m */,
 				00A4783919057D3B0041584F /* Main.storyboard */,
+				009AABE71905B0480003DEE3 /* RSWebViewController.h */,
+				009AABE81905B0480003DEE3 /* RSWebViewController.m */,
+				009AAB56190594520003DEE3 /* RSBurgerProtocol.h */,
+				00A4785C19057DB10041584F /* RSRootMenuViewController.h */,
+				00A4785D19057DB10041584F /* RSRootMenuViewController.m */,
+				00A4786219057EC80041584F /* RSUsersViewController.h */,
+				00A4786319057EC80041584F /* RSUsersViewController.m */,
+				00A4786519057ED30041584F /* RSSearchViewController.h */,
+				00A4786619057ED30041584F /* RSSearchViewController.m */,
+				00A4785F19057E8B0041584F /* RSReposViewController.h */,
+				00A4786019057E8B0041584F /* RSReposViewController.m */,
 				00A4783C19057D3B0041584F /* RSViewController.h */,
 				00A4783D19057D3B0041584F /* RSViewController.m */,
 				00A4783F19057D3B0041584F /* Images.xcassets */,
 				00A4782E19057D3B0041584F /* Supporting Files */,
+				009AABEA1905B2E60003DEE3 /* RSRepo.h */,
+				009AABEB1905B2E60003DEE3 /* RSRepo.m */,
 			);
 			path = GithubToGo;
 			sourceTree = "<group>";
@@ -250,8 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009AABEC1905B2E60003DEE3 /* RSRepo.m in Sources */,
+				00A4786419057EC80041584F /* RSUsersViewController.m in Sources */,
+				00A4786119057E8B0041584F /* RSReposViewController.m in Sources */,
+				009AABE91905B0480003DEE3 /* RSWebViewController.m in Sources */,
 				00A4783419057D3B0041584F /* main.m in Sources */,
 				00A4783819057D3B0041584F /* RSAppDelegate.m in Sources */,
+				00A4786719057ED30041584F /* RSSearchViewController.m in Sources */,
+				00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */,
 				00A4783E19057D3B0041584F /* RSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +495,7 @@
 				00A4785819057D3B0041584F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00A4785919057D3B0041584F /* Build configuration list for PBXNativeTarget "GithubToGoTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +504,7 @@
 				00A4785B19057D3B0041584F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
