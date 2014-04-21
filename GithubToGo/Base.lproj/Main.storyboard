@@ -113,14 +113,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="lNz-z6-5RA" kind="push" id="r6G-XO-eud"/>
+                                            <segue destination="lNz-z6-5RA" kind="push" identifier="ShowGitPage" id="r6G-XO-eud"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vZB-92-S9Q" id="TvG-e3-CUk"/>
+                                    <outlet property="delegate" destination="vZB-92-S9Q" id="Kdr-08-ZcP"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="9ul-B9-IVt" id="176-Bl-Mjd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD1-Yb-E9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,11 +149,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lNz-z6-5RA" id="qjV-LL-I86"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="bSk-aa-4YB"/>
+                    <connections>
+                        <outlet property="webView" destination="H4u-K6-eNj" id="nGt-i1-uFX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pB2-qF-VC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

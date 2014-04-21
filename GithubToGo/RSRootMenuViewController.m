@@ -47,18 +47,20 @@
     RSReposViewController *repoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Repos"];
     repoViewController.title = @"My Repos";
     repoViewController.burgerDelegate = self;
+    
     RSUsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Users"];
     usersViewController.title = @"Following";
     usersViewController.burgerDelegate = self;
+    
     RSSearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Search"];
     searchViewController.title = @"Search";
     searchViewController.burgerDelegate = self;
+    UINavigationController *searchNav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    searchNav.navigationBarHidden = YES;
     
+    self.arrayOfViewControllers = @[repoViewController, usersViewController, searchNav];
     
-    
-    self.arrayOfViewControllers = @[repoViewController, usersViewController, searchViewController];
-    
-    self.topViewController = self.arrayOfViewControllers[0];
+    self.topViewController = self.arrayOfViewControllers[2];
     
     [self addChildViewController:self.topViewController];
     //    repoViewController.view.frame = self.view.frame;

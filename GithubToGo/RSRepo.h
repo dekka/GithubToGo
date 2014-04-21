@@ -12,6 +12,5 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *html_url;
-@property (nonatomic, strong) NSData *html_cache;
 
 @end

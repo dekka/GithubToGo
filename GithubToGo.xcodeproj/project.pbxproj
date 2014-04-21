@@ -16,7 +16,6 @@
 		00A4783419057D3B0041584F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4783319057D3B0041584F /* main.m */; };
 		00A4783819057D3B0041584F /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4783719057D3B0041584F /* RSAppDelegate.m */; };
 		00A4783B19057D3B0041584F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00A4783919057D3B0041584F /* Main.storyboard */; };
-		00A4783E19057D3B0041584F /* RSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4783D19057D3B0041584F /* RSViewController.m */; };
 		00A4784019057D3B0041584F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00A4783F19057D3B0041584F /* Images.xcassets */; };
 		00A4784719057D3B0041584F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4784619057D3B0041584F /* XCTest.framework */; };
 		00A4784819057D3B0041584F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782719057D3B0041584F /* Foundation.framework */; };
@@ -56,8 +55,6 @@
 		00A4783619057D3B0041584F /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
 		00A4783719057D3B0041584F /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		00A4783A19057D3B0041584F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		00A4783C19057D3B0041584F /* RSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSViewController.h; sourceTree = "<group>"; };
-		00A4783D19057D3B0041584F /* RSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewController.m; sourceTree = "<group>"; };
 		00A4783F19057D3B0041584F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00A4784519057D3B0041584F /* GithubToGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubToGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A4784619057D3B0041584F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -145,8 +142,6 @@
 				00A4786619057ED30041584F /* RSSearchViewController.m */,
 				00A4785F19057E8B0041584F /* RSReposViewController.h */,
 				00A4786019057E8B0041584F /* RSReposViewController.m */,
-				00A4783C19057D3B0041584F /* RSViewController.h */,
-				00A4783D19057D3B0041584F /* RSViewController.m */,
 				00A4783F19057D3B0041584F /* Images.xcassets */,
 				00A4782E19057D3B0041584F /* Supporting Files */,
 				009AABEA1905B2E60003DEE3 /* RSRepo.h */,
@@ -290,7 +285,6 @@
 				00A4783819057D3B0041584F /* RSAppDelegate.m in Sources */,
 				00A4786719057ED30041584F /* RSSearchViewController.m in Sources */,
 				00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */,
-				00A4783E19057D3B0041584F /* RSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

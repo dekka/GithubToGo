@@ -10,4 +10,7 @@
 
 @interface RSWebViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) NSString *searchResultURL;
+
 @end

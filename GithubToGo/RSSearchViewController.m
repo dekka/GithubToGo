@@ -7,10 +7,15 @@
 //
 
 #import "RSSearchViewController.h"
+#import "RSWebViewController.h"
+#import "RSRepo.h"
 
-@interface RSSearchViewController () <UISearchBarDelegate>
+@interface RSSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
+
 
 @implementation RSSearchViewController
 
@@ -26,17 +31,79 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.searchResults = [[NSMutableArray alloc] init];    
+}
+
+- (void)reposForSearchString:(NSString *)searchString
+{
+    NSURL *jsonURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@", searchString]];
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
+    
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                  options:NSJSONReadingMutableContainers
+                                                    error:nil];
+    
+    NSMutableArray *tempArray = [jsonDict objectForKey:@"items"];
+    
+    for (NSDictionary *tempDict in tempArray) {
+        RSRepo *repo = [[RSRepo alloc] init];
+        repo.name = [tempDict objectForKey:@"name"];
+        repo.html_url = [tempDict objectForKey:@"html_url"];
+        [self.searchResults addObject:repo];
+    }
+    [self.tableView reloadData];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.searchResults count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = [self.searchResults[indexPath.row] name];
+    return cell;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self reposForSearchString:searchBar.text];    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
+
 - (IBAction)burgerPressed:(id)sender
 {
     [self.burgerDelegate handleBurgerPressed];
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowGitPage"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        RSRepo *repo = [self.searchResults objectAtIndex:indexPath.row];
+        RSWebViewController *wvc = (RSWebViewController *)segue.destinationViewController;
+        wvc.searchResultURL = repo.html_url;
+    }
+}
 
 @end
+
+
+
+
+
+
+
+
