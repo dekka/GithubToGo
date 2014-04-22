@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0016CF861906F857002F1D5C /* RSNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016CF851906F857002F1D5C /* RSNetworkController.m */; };
 		009AABE91905B0480003DEE3 /* RSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABE81905B0480003DEE3 /* RSWebViewController.m */; };
 		009AABEC1905B2E60003DEE3 /* RSRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABEB1905B2E60003DEE3 /* RSRepo.m */; };
 		00A4782819057D3B0041584F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782719057D3B0041584F /* Foundation.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0016CF841906F857002F1D5C /* RSNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNetworkController.h; sourceTree = "<group>"; };
+		0016CF851906F857002F1D5C /* RSNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNetworkController.m; sourceTree = "<group>"; };
 		009AAB56190594520003DEE3 /* RSBurgerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSBurgerProtocol.h; sourceTree = "<group>"; };
 		009AABE71905B0480003DEE3 /* RSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWebViewController.h; sourceTree = "<group>"; };
 		009AABE81905B0480003DEE3 /* RSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWebViewController.m; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				009AABE71905B0480003DEE3 /* RSWebViewController.h */,
 				009AABE81905B0480003DEE3 /* RSWebViewController.m */,
 				00A4782E19057D3B0041584F /* Supporting Files */,
+				0016CF841906F857002F1D5C /* RSNetworkController.h */,
+				0016CF851906F857002F1D5C /* RSNetworkController.m */,
 			);
 			path = GithubToGo;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				00A4783419057D3B0041584F /* main.m in Sources */,
 				00A4783819057D3B0041584F /* RSAppDelegate.m in Sources */,
 				00A4786719057ED30041584F /* RSSearchViewController.m in Sources */,
+				0016CF861906F857002F1D5C /* RSNetworkController.m in Sources */,
 				00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

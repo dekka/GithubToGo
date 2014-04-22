@@ -51,6 +51,8 @@
     RSUsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Users"];
     usersViewController.title = @"Following";
     usersViewController.burgerDelegate = self;
+    UINavigationController *userNav = [[UINavigationController alloc] initWithRootViewController:usersViewController];
+    userNav.navigationBarHidden = YES;
     
     RSSearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Search"];
     searchViewController.title = @"Search";
@@ -58,7 +60,7 @@
     UINavigationController *searchNav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     searchNav.navigationBarHidden = YES;
     
-    self.arrayOfViewControllers = @[repoViewController, usersViewController, searchNav];
+    self.arrayOfViewControllers = @[repoViewController, userNav, searchNav];
     
     self.topViewController = self.arrayOfViewControllers[2];
     
@@ -187,7 +189,7 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.arrayOfViewControllers.count;
 }

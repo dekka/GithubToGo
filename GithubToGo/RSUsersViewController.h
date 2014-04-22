@@ -12,6 +12,6 @@
 @interface RSUsersViewController : UIViewController 
 
 @property (nonatomic, unsafe_unretained)  id <RSBurgerProtocol> burgerDelegate;
-
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end
