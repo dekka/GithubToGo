@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9EBD5CC7-3C24-4B81-AA10-74AC878946B5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GithubToGo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B6FA2F7C-D238-491E-8AA3-0D37E0D5325C</key>
+		<string>ssh://github.com/dekka/GithubToGo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GithubToGo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B6FA2F7C-D238-491E-8AA3-0D37E0D5325C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/dekka/GithubToGo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B6FA2F7C-D238-491E-8AA3-0D37E0D5325C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B6FA2F7C-D238-491E-8AA3-0D37E0D5325C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GithubToGo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -37,6 +37,8 @@
 
 - (void)reposForSearchString:(NSString *)searchString
 {
+    searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSURL *jsonURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@", searchString]];
     
     NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];

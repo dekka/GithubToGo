@@ -29,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.searchResultURL]];
+
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.searchResultURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:604800];
+    
     [self.webView loadRequest:urlRequest];
     
 }
