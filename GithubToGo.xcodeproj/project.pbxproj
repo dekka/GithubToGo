@@ -128,24 +128,24 @@
 		00A4782D19057D3B0041584F /* GithubToGo */ = {
 			isa = PBXGroup;
 			children = (
+				00A4783F19057D3B0041584F /* Images.xcassets */,
+				00A4783919057D3B0041584F /* Main.storyboard */,
 				00A4783619057D3B0041584F /* RSAppDelegate.h */,
 				00A4783719057D3B0041584F /* RSAppDelegate.m */,
-				00A4783919057D3B0041584F /* Main.storyboard */,
-				009AABE71905B0480003DEE3 /* RSWebViewController.h */,
-				009AABE81905B0480003DEE3 /* RSWebViewController.m */,
 				009AAB56190594520003DEE3 /* RSBurgerProtocol.h */,
-				00A4785C19057DB10041584F /* RSRootMenuViewController.h */,
-				00A4785D19057DB10041584F /* RSRootMenuViewController.m */,
-				00A4786219057EC80041584F /* RSUsersViewController.h */,
-				00A4786319057EC80041584F /* RSUsersViewController.m */,
-				00A4786519057ED30041584F /* RSSearchViewController.h */,
-				00A4786619057ED30041584F /* RSSearchViewController.m */,
-				00A4785F19057E8B0041584F /* RSReposViewController.h */,
-				00A4786019057E8B0041584F /* RSReposViewController.m */,
-				00A4783F19057D3B0041584F /* Images.xcassets */,
-				00A4782E19057D3B0041584F /* Supporting Files */,
 				009AABEA1905B2E60003DEE3 /* RSRepo.h */,
 				009AABEB1905B2E60003DEE3 /* RSRepo.m */,
+				00A4785F19057E8B0041584F /* RSReposViewController.h */,
+				00A4786019057E8B0041584F /* RSReposViewController.m */,
+				00A4785C19057DB10041584F /* RSRootMenuViewController.h */,
+				00A4785D19057DB10041584F /* RSRootMenuViewController.m */,
+				00A4786519057ED30041584F /* RSSearchViewController.h */,
+				00A4786619057ED30041584F /* RSSearchViewController.m */,
+				00A4786219057EC80041584F /* RSUsersViewController.h */,
+				00A4786319057EC80041584F /* RSUsersViewController.m */,
+				009AABE71905B0480003DEE3 /* RSWebViewController.h */,
+				009AABE81905B0480003DEE3 /* RSWebViewController.m */,
+				00A4782E19057D3B0041584F /* Supporting Files */,
 			);
 			path = GithubToGo;
 			sourceTree = "<group>";

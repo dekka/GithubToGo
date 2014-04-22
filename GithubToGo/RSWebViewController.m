@@ -51,5 +51,9 @@
     [super didReceiveMemoryWarning];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 @end

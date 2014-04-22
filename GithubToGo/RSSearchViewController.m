@@ -31,7 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.searchResults = [[NSMutableArray alloc] init];    
+    self.searchResults = [[NSMutableArray alloc] init];
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 }
 
 - (void)reposForSearchString:(NSString *)searchString
@@ -73,9 +74,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self reposForSearchString:searchBar.text];    
+    [searchBar resignFirstResponder];
+    [self reposForSearchString:searchBar.text];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,6 +105,11 @@
         RSWebViewController *wvc = (RSWebViewController *)segue.destinationViewController;
         wvc.searchResultURL = repo.html_url;
     }
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end

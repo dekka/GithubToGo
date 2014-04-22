@@ -205,6 +205,11 @@
     [self switchToViewControllerAtIndexPath:indexPath];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 @end
 
 
