@@ -8,11 +8,14 @@
 
 #import "RSReposViewController.h"
 #import "RSAppDelegate.h"
+#import "RSNetworkController.h"
 
-@interface RSReposViewController () <NSURLSessionDelegate>
+@interface RSReposViewController () <NSURLSessionDelegate, UITableViewDataSource, UITableViewDelegate, RSNetworkControllerDelegate>
 
 @property (nonatomic, weak) RSAppDelegate *appDelegate;
 @property (nonatomic, weak) RSNetworkController *networkController;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) NSMutableArray *repos;
 
 @end
 
@@ -32,10 +35,35 @@
     [super viewDidLoad];
     self.appDelegate = [UIApplication sharedApplication].delegate;
     self.networkController = self.appDelegate.networkController;
-    [self.networkController requestOAuthAccess];
-
+    self.networkController.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSOperationQueue *networkRequest = [NSOperationQueue new];
+    [networkRequest addOperationWithBlock:^{
+        [self.networkController retrieveReposForCurrentUser];
+    }];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.repos count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RepoCell" forIndexPath:indexPath];
+    cell.textLabel.text = [self.repos[indexPath.row] name];
+    NSLog(@"cell label: %@", cell.textLabel.text);
+    return cell;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -53,6 +81,22 @@
     return YES;
 }
 
+#pragma mark - RSNetworkControllerDelegate
+
+- (void)downloadedRepos:(NSMutableArray *)repoResults;
+{
+    self.repos = repoResults;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.tableView reloadData];
+    }];
+}
 
 
 @end
+
+
+
+
+
+

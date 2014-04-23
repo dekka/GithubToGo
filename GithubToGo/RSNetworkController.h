@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RSNetworkControllerDelegate <NSObject>
+
+- (void)downloadedRepos:(NSMutableArray *)repoResults;
+
+@end
+
 @interface RSNetworkController : NSObject
 
--(void)requestOAuthAccess;
--(void)handleOAuthCallbackWithURL:(NSURL *)url;
+@property (nonatomic, strong) NSMutableArray *repoResults;
+@property (nonatomic, unsafe_unretained) id<RSNetworkControllerDelegate> delegate;
 
+- (void)requestOAuthAccess;
+- (void)handleOAuthCallbackWithURL:(NSURL *)url;
+- (void)retrieveReposForCurrentUser;
 
 @end
