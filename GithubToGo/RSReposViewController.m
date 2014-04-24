@@ -10,7 +10,7 @@
 #import "RSAppDelegate.h"
 #import "RSNetworkController.h"
 
-@interface RSReposViewController () <NSURLSessionDelegate, UITableViewDataSource, UITableViewDelegate, RSNetworkControllerDelegate>
+@interface RSReposViewController () <NSURLSessionDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) RSAppDelegate *appDelegate;
 @property (nonatomic, weak) RSNetworkController *networkController;
@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.appDelegate = [UIApplication sharedApplication].delegate;
     self.networkController = self.appDelegate.networkController;
-    self.networkController.delegate = self;
+//    self.networkController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,7 +43,19 @@
     [super viewWillAppear:animated];
     NSOperationQueue *networkRequest = [NSOperationQueue new];
     [networkRequest addOperationWithBlock:^{
-        [self.networkController retrieveReposForCurrentUser];
+        [self.networkController retrieveReposForCurrentUser:^(NSMutableArray *repos) {
+            self.repos = repos;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+            
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.tableView reloadData];
+            }];
+        }];
     }];
 }
 
@@ -61,7 +73,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RepoCell" forIndexPath:indexPath];
     cell.textLabel.text = [self.repos[indexPath.row] name];
-    NSLog(@"cell label: %@", cell.textLabel.text);
+//    NSLog(@"cell label: %@", cell.textLabel.text);
     return cell;
 }
 
@@ -83,14 +95,14 @@
 
 #pragma mark - RSNetworkControllerDelegate
 
-- (void)downloadedRepos:(NSMutableArray *)repoResults;
-{
-    self.repos = repoResults;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.tableView reloadData];
-    }];
-}
+//- (void)downloadedRepos:(NSMutableArray *)repoResults;
+//{
+//    self.repos = repoResults;
+//    
+//    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//        [self.tableView reloadData];
+//    }];
+//}
 
 
 @end

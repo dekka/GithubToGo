@@ -12,6 +12,7 @@
 @interface RSNetworkController ()
 
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSURLSession *urlSession;
 
 @end
 
@@ -31,6 +32,9 @@
 {
     self = [super init];
     if (self) {
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
+        
         self.token = [[NSUserDefaults standardUserDefaults] objectForKey:@"OAuthToken"];
         if (!self.token) {
             [self requestOAuthAccess];
@@ -55,8 +59,7 @@
     NSData *postData = [postString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     [request setURL:[NSURL URLWithString:@"https://github.com/login/oauth/access_token"]];
     [request setHTTPMethod:@"POST"];
@@ -64,7 +67,7 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *postDataTask = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
 //            NSLog(@"error: %@",error.description);
         }
@@ -99,30 +102,35 @@
 }
 
 
-- (void)retrieveReposForCurrentUser
+- (void)retrieveReposForCurrentUser:(void(^)(NSMutableArray *repos))completionBlock
 {
     NSURL *userRepoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@user/repos",GITHUB_API_URL]];
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     [request setURL:userRepoURL];
     [request setHTTPMethod:@"GET"];
 //    NSLog(@" %@",self.token);
     [request setValue:[NSString stringWithFormat:@"token %@",self.token] forHTTPHeaderField:@"Authorization"];
-    NSURLSessionDataTask *repoDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *repoDataTask = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 //        NSLog(@"response: %@",response.description);
    
         NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
         self.repoResults = [NSMutableArray new];
-        for (NSDictionary *tempDict in jsonArray) {
-            RSRepo *repo = [[RSRepo alloc] init];
-            repo.name = [tempDict objectForKey:@"name"];
-            repo.html_url = [tempDict objectForKey:@"html_url"];
-            [self.repoResults addObject:repo];
-        }
         
-        [self.delegate downloadedRepos:self.repoResults];
+//        for (NSDictionary *tempDict in jsonArray) {
+//            RSRepo *repo = [[RSRepo alloc] init];
+//            repo.name = [tempDict objectForKey:@"name"];
+//            repo.html_url = [tempDict objectForKey:@"html_url"];
+//            [self.repoResults addObject:repo];
+//        }
+        [jsonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            RSRepo *repo = [RSRepo new];
+            repo.name = [obj objectForKey:@"name"];
+            repo.html_url = [obj objectForKey:@"html_url"];
+            [self.repoResults addObject:repo];
+        }];
+        
+        completionBlock(self.repoResults);
     }];
     [repoDataTask resume];    
 }

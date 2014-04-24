@@ -30,9 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.searchResults = [[NSMutableArray alloc] init];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+    self.searchResults = [[NSMutableArray alloc] init];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)usersForSearchString:(NSString *)searchString
@@ -85,6 +90,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    [self.searchResults removeAllObjects];
     [self usersForSearchString:searchBar.text];
     
 }

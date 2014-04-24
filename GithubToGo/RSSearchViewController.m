@@ -9,10 +9,15 @@
 #import "RSSearchViewController.h"
 #import "RSWebViewController.h"
 #import "RSRepo.h"
+#import "RSUser.h"
 
 @interface RSSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property(nonatomic) NSInteger selectedScopeButtonIndex;
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) NSOperationQueue *imageQueue;
+
 
 @end
 
@@ -31,8 +36,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.searchResults = [[NSMutableArray alloc] init];
+    self.imageQueue = [NSOperationQueue new];
+    //self.imageQueue.maxConcurrentOperationCount = 1;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+    self.searchResults = [[NSMutableArray alloc] init];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)reposForSearchString:(NSString *)searchString
@@ -58,6 +71,29 @@
     [self.tableView reloadData];
 }
 
+- (void)usersForSearchString:(NSString *)searchString
+{
+    searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *jsonURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.github.com/search/users?q=%@", searchString]];
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
+    
+    NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                    options:NSJSONReadingMutableContainers
+                                                                      error:nil];
+    
+    NSMutableArray *tempArray = [jsonDict objectForKey:@"items"];
+    
+    
+    for (NSDictionary *tempDict in tempArray) {
+        RSUser *user = [[RSUser alloc] initWithJson:tempDict];
+        [self.searchResults addObject:user];
+    }
+    [self.tableView reloadData];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -70,22 +106,57 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier forIndexPath:indexPath];
+    
+    if ([self.identifier isEqualToString:@"UserCell"])
+    {
+        RSUser *user = self.searchResults[indexPath.row];
+        if (user.avatarImage)
+        {
+            cell.imageView.image = user.avatarImage;
+        } else {
+            cell.imageView.image = [UIImage imageNamed:@"burgerbutton"];
+           [user downloadAvatarOnQueue:_imageQueue withCompletionBlock:^{
+               [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+           }];
+        }
+    }
     
     cell.textLabel.text = [self.searchResults[indexPath.row] name];
     return cell;
 }
 
+#pragma mark - UITableView Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self performSegueWithIdentifier:@"ShowGitPage" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RSUser *user = self.searchResults[indexPath.row];
+    if (!user.avatarImage)
+    {
+        [user cancelAvatarDownload];
+    }
+
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    [self reposForSearchString:searchBar.text];
+    [self.searchResults removeAllObjects];
     
+    if (searchBar.selectedScopeButtonIndex == 0) {
+        [self reposForSearchString:searchBar.text];
+        self.identifier = @"SearchCell";
+    } else if (searchBar.selectedScopeButtonIndex == 1) {
+        [self usersForSearchString:searchBar.text];
+        self.identifier = @"UserCell";
+    }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,7 +176,7 @@
         RSRepo *repo = [self.searchResults objectAtIndex:indexPath.row];
         RSWebViewController *wvc = (RSWebViewController *)segue.destinationViewController;
         wvc.searchResultURL = repo.html_url;
-    }
+    } 
 }
 
 - (BOOL)prefersStatusBarHidden

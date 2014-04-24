@@ -10,6 +10,7 @@
 #import "RSReposViewController.h"
 #import "RSSearchViewController.h"
 #import "RSUsersViewController.h"
+#import "RSFollowingViewController.h"
 
 @interface RSRootMenuViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, RSBurgerProtocol>
 
@@ -39,31 +40,37 @@
     [self setupChildViewControllers];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tapToClose = [UITapGestureRecognizer new];
     
 }
 
 - (void)setupChildViewControllers
 {
     RSReposViewController *repoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Repos"];
-    repoViewController.title = @"My Repos";
+    repoViewController.title = @"M y  R e p o s";
     repoViewController.burgerDelegate = self;
     
+    RSFollowingViewController *followingViewControler = [self.storyboard instantiateViewControllerWithIdentifier:@"Following"];
+    followingViewControler.title = @"F o l l o w i n g";
+    followingViewControler.burgerDelegate = self;
+    UINavigationController *followingNav = [[UINavigationController alloc] initWithRootViewController:followingViewControler];
+    followingNav.navigationBarHidden = YES;
+    
     RSUsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Users"];
-    usersViewController.title = @"Following";
+    usersViewController.title = @"S e a r c h  U s e r s";
     usersViewController.burgerDelegate = self;
     UINavigationController *userNav = [[UINavigationController alloc] initWithRootViewController:usersViewController];
     userNav.navigationBarHidden = YES;
     
     RSSearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Search"];
-    searchViewController.title = @"Search";
+    searchViewController.title = @"S e a r c h";
     searchViewController.burgerDelegate = self;
     UINavigationController *searchNav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     searchNav.navigationBarHidden = YES;
     
-    self.arrayOfViewControllers = @[repoViewController, userNav, searchNav];
+    self.arrayOfViewControllers = @[repoViewController, followingNav, userNav, searchNav];
     
-    self.topViewController = self.arrayOfViewControllers[2];
+    self.topViewController = self.arrayOfViewControllers[0];
     
     [self addChildViewController:self.topViewController];
     //    repoViewController.view.frame = self.view.frame;
@@ -140,7 +147,7 @@
         
     } completion:^(BOOL finished) {
         if (finished) {
-            self.tapToClose = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
+            [self.tapToClose addTarget:self action:@selector(closeMenu:)];
             [self.topViewController.view addGestureRecognizer:self.tapToClose];
             self.menuIsOpen = YES;
         }
@@ -197,9 +204,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    tableView.separatorColor = [UIColor clearColor];
+    tableView.backgroundColor = [UIColor lightGrayColor];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.textLabel.text = [self.arrayOfViewControllers[indexPath.row] title];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
