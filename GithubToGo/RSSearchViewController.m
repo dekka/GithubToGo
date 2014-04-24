@@ -136,12 +136,13 @@
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RSUser *user = self.searchResults[indexPath.row];
-    if (!user.avatarImage)
-    {
-        [user cancelAvatarDownload];
+    if (self.selectedScopeButtonIndex == 1) {
+        RSUser *user = self.searchResults[indexPath.row];
+        if (!user.avatarImage)
+        {
+            [user cancelAvatarDownload];
+        }
     }
-
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

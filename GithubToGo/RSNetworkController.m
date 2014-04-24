@@ -8,11 +8,14 @@
 
 #import "RSNetworkController.h"
 #import "RSRepo.h"
+#import "RSUser.h"
+#import "RSFollowing.h"
 
 @interface RSNetworkController ()
 
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSURLSession *urlSession;
+@property (nonatomic, copy) void (^completeOAuthAccess)();
 
 @end
 
@@ -36,19 +39,30 @@
         self.urlSession = [NSURLSession sessionWithConfiguration:configuration];
         
         self.token = [[NSUserDefaults standardUserDefaults] objectForKey:@"OAuthToken"];
-        if (!self.token) {
-            [self requestOAuthAccess];
-        }
+//        if (!self.token) {
+//            [self requestOAuthAccess];
+//        }
     }
     return self;
     
 }
 
-- (void)requestOAuthAccess
+- (void)requestOAuthAccessWithCompletion:(void(^)())completeOAuthAccess
 {
+    self.completeOAuthAccess = completeOAuthAccess;
     NSString *urlString = [NSString stringWithFormat:GITHUB_OAUTH_URL,GITHUB_CLIENT_ID,GITHUB_CALLBACK_URI,@"user,repo"];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+}
+
+- (BOOL)checkForOAuthToken
+{
+    if (self.token) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 - (void)handleOAuthCallbackWithURL:(NSURL *)url
@@ -75,6 +89,10 @@
        self.token = [self convertResponseDataIntoToken:data];
         [[NSUserDefaults standardUserDefaults] setObject:self.token forKey:@"OAuthToken"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            self.completeOAuthAccess();
+        }];        
     }];
     [postDataTask resume];
 }
@@ -135,9 +153,37 @@
     [repoDataTask resume];    
 }
 
+- (void)retrieveFollowingForCurrentUser:(void (^)(NSMutableArray *))completionBlock
+{
+    NSURL *followingURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@user/following",GITHUB_API_URL]];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    [request setURL:followingURL];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:[NSString stringWithFormat:@"token %@",self.token] forHTTPHeaderField:@"Authorization"];
+    NSURLSessionDataTask *followingDataTask = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSMutableArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        self.followingResults = [NSMutableArray new];
+        [jsonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            RSFollowing *following = [RSFollowing new];
+            following.name = [obj objectForKey:@"login"];
+            following.html_url = [obj objectForKey:@"html_url"];
+            following.followingAvatarPath = [obj objectForKey:@"avatar_url"];
+            [self.followingResults addObject:following];
+        }];
+        completionBlock(self.followingResults);
+    }];
+    [followingDataTask resume];
+}
+
 
 
 @end
+
+
+
+
+
+
 
 
 

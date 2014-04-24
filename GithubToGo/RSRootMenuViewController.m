@@ -9,7 +9,6 @@
 #import "RSRootMenuViewController.h"
 #import "RSReposViewController.h"
 #import "RSSearchViewController.h"
-#import "RSUsersViewController.h"
 #import "RSFollowingViewController.h"
 
 @interface RSRootMenuViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, RSBurgerProtocol>
@@ -56,19 +55,13 @@
     UINavigationController *followingNav = [[UINavigationController alloc] initWithRootViewController:followingViewControler];
     followingNav.navigationBarHidden = YES;
     
-    RSUsersViewController *usersViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Users"];
-    usersViewController.title = @"S e a r c h  U s e r s";
-    usersViewController.burgerDelegate = self;
-    UINavigationController *userNav = [[UINavigationController alloc] initWithRootViewController:usersViewController];
-    userNav.navigationBarHidden = YES;
-    
     RSSearchViewController *searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Search"];
     searchViewController.title = @"S e a r c h";
     searchViewController.burgerDelegate = self;
     UINavigationController *searchNav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     searchNav.navigationBarHidden = YES;
     
-    self.arrayOfViewControllers = @[repoViewController, followingNav, userNav, searchNav];
+    self.arrayOfViewControllers = @[repoViewController, followingNav, searchNav];
     
     self.topViewController = self.arrayOfViewControllers[0];
     

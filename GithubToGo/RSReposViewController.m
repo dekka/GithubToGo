@@ -35,7 +35,6 @@
     [super viewDidLoad];
     self.appDelegate = [UIApplication sharedApplication].delegate;
     self.networkController = self.appDelegate.networkController;
-//    self.networkController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,11 +49,6 @@
                 [self.tableView reloadData];
             });
             
-            
-            
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.tableView reloadData];
-            }];
         }];
     }];
 }

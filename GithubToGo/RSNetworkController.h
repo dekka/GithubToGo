@@ -17,10 +17,13 @@
 @interface RSNetworkController : NSObject
 
 @property (nonatomic, strong) NSMutableArray *repoResults;
+@property (nonatomic, strong) NSMutableArray *followingResults;
 //@property (nonatomic, unsafe_unretained) id<RSNetworkControllerDelegate> delegate;
 
-- (void)requestOAuthAccess;
+- (void)requestOAuthAccessWithCompletion:(void(^)())completeOAuthAccess;
+- (BOOL)checkForOAuthToken;
 - (void)handleOAuthCallbackWithURL:(NSURL *)url;
 - (void)retrieveReposForCurrentUser:(void(^)(NSMutableArray *repos))completionBlock;
+- (void)retrieveFollowingForCurrentUser:(void(^)(NSMutableArray *following))completionBlock;
 
 @end

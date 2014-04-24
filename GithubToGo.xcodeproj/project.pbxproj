@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		00156744190742C8004DCD4B /* RSFollowingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00156743190742C8004DCD4B /* RSFollowingViewController.m */; };
 		0016CF861906F857002F1D5C /* RSNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016CF851906F857002F1D5C /* RSNetworkController.m */; };
+		00244C8F1909B0B000FCEAC1 /* RSFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244C8E1909B0B000FCEAC1 /* RSFollowing.m */; };
+		00244C921909C2E800FCEAC1 /* FollowingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244C911909C2E800FCEAC1 /* FollowingCell.m */; };
 		009AABE91905B0480003DEE3 /* RSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABE81905B0480003DEE3 /* RSWebViewController.m */; };
 		009AABEC1905B2E60003DEE3 /* RSRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 009AABEB1905B2E60003DEE3 /* RSRepo.m */; };
 		00A4782819057D3B0041584F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A4782719057D3B0041584F /* Foundation.framework */; };
@@ -26,9 +28,9 @@
 		00A4785319057D3B0041584F /* GithubToGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4785219057D3B0041584F /* GithubToGoTests.m */; };
 		00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4785D19057DB10041584F /* RSRootMenuViewController.m */; };
 		00A4786119057E8B0041584F /* RSReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786019057E8B0041584F /* RSReposViewController.m */; };
-		00A4786419057EC80041584F /* RSUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786319057EC80041584F /* RSUsersViewController.m */; };
 		00A4786719057ED30041584F /* RSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A4786619057ED30041584F /* RSSearchViewController.m */; };
 		00C1A4C419098C940064A857 /* RSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A4C319098C940064A857 /* RSUser.m */; };
+		00C1A4C71909A1260064A857 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A4C61909A1260064A857 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,10 @@
 		00156743190742C8004DCD4B /* RSFollowingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSFollowingViewController.m; sourceTree = "<group>"; };
 		0016CF841906F857002F1D5C /* RSNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNetworkController.h; sourceTree = "<group>"; };
 		0016CF851906F857002F1D5C /* RSNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNetworkController.m; sourceTree = "<group>"; };
+		00244C8D1909B0B000FCEAC1 /* RSFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFollowing.h; sourceTree = "<group>"; };
+		00244C8E1909B0B000FCEAC1 /* RSFollowing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSFollowing.m; sourceTree = "<group>"; };
+		00244C901909C2E800FCEAC1 /* FollowingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingCell.h; sourceTree = "<group>"; };
+		00244C911909C2E800FCEAC1 /* FollowingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingCell.m; sourceTree = "<group>"; };
 		009AAB56190594520003DEE3 /* RSBurgerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSBurgerProtocol.h; sourceTree = "<group>"; };
 		009AABE71905B0480003DEE3 /* RSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWebViewController.h; sourceTree = "<group>"; };
 		009AABE81905B0480003DEE3 /* RSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWebViewController.m; sourceTree = "<group>"; };
@@ -72,12 +78,12 @@
 		00A4785D19057DB10041584F /* RSRootMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRootMenuViewController.m; sourceTree = "<group>"; };
 		00A4785F19057E8B0041584F /* RSReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSReposViewController.h; sourceTree = "<group>"; };
 		00A4786019057E8B0041584F /* RSReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSReposViewController.m; sourceTree = "<group>"; };
-		00A4786219057EC80041584F /* RSUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUsersViewController.h; sourceTree = "<group>"; };
-		00A4786319057EC80041584F /* RSUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUsersViewController.m; sourceTree = "<group>"; };
 		00A4786519057ED30041584F /* RSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSearchViewController.h; sourceTree = "<group>"; };
 		00A4786619057ED30041584F /* RSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSearchViewController.m; sourceTree = "<group>"; };
 		00C1A4C219098C940064A857 /* RSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUser.h; sourceTree = "<group>"; };
 		00C1A4C319098C940064A857 /* RSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUser.m; sourceTree = "<group>"; };
+		00C1A4C51909A1260064A857 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		00C1A4C61909A1260064A857 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,20 +165,23 @@
 			isa = PBXGroup;
 			children = (
 				0015674719081905004DCD4B /* Controller */,
-				00156746190818FE004DCD4B /* View */,
-				00156745190818F4004DCD4B /* Model */,
 				00A4783F19057D3B0041584F /* Images.xcassets */,
+				00C1A4C51909A1260064A857 /* LoginViewController.h */,
+				00C1A4C61909A1260064A857 /* LoginViewController.m */,
 				00A4783919057D3B0041584F /* Main.storyboard */,
+				00156745190818F4004DCD4B /* Model */,
 				00A4783619057D3B0041584F /* RSAppDelegate.h */,
 				00A4783719057D3B0041584F /* RSAppDelegate.m */,
 				009AAB56190594520003DEE3 /* RSBurgerProtocol.h */,
 				00156742190742C8004DCD4B /* RSFollowingViewController.h */,
 				00156743190742C8004DCD4B /* RSFollowingViewController.m */,
+				00244C901909C2E800FCEAC1 /* FollowingCell.h */,
+				00244C911909C2E800FCEAC1 /* FollowingCell.m */,
+				00244C8D1909B0B000FCEAC1 /* RSFollowing.h */,
+				00244C8E1909B0B000FCEAC1 /* RSFollowing.m */,
 				0016CF841906F857002F1D5C /* RSNetworkController.h */,
 				0016CF851906F857002F1D5C /* RSNetworkController.m */,
 				009AABEA1905B2E60003DEE3 /* RSRepo.h */,
-				00C1A4C219098C940064A857 /* RSUser.h */,
-				00C1A4C319098C940064A857 /* RSUser.m */,
 				009AABEB1905B2E60003DEE3 /* RSRepo.m */,
 				00A4785F19057E8B0041584F /* RSReposViewController.h */,
 				00A4786019057E8B0041584F /* RSReposViewController.m */,
@@ -180,11 +189,12 @@
 				00A4785D19057DB10041584F /* RSRootMenuViewController.m */,
 				00A4786519057ED30041584F /* RSSearchViewController.h */,
 				00A4786619057ED30041584F /* RSSearchViewController.m */,
-				00A4786219057EC80041584F /* RSUsersViewController.h */,
-				00A4786319057EC80041584F /* RSUsersViewController.m */,
+				00C1A4C219098C940064A857 /* RSUser.h */,
+				00C1A4C319098C940064A857 /* RSUser.m */,
 				009AABE71905B0480003DEE3 /* RSWebViewController.h */,
 				009AABE81905B0480003DEE3 /* RSWebViewController.m */,
 				00A4782E19057D3B0041584F /* Supporting Files */,
+				00156746190818FE004DCD4B /* View */,
 			);
 			path = GithubToGo;
 			sourceTree = "<group>";
@@ -318,14 +328,16 @@
 			files = (
 				009AABEC1905B2E60003DEE3 /* RSRepo.m in Sources */,
 				00C1A4C419098C940064A857 /* RSUser.m in Sources */,
-				00A4786419057EC80041584F /* RSUsersViewController.m in Sources */,
+				00244C921909C2E800FCEAC1 /* FollowingCell.m in Sources */,
 				00A4786119057E8B0041584F /* RSReposViewController.m in Sources */,
 				00156744190742C8004DCD4B /* RSFollowingViewController.m in Sources */,
 				009AABE91905B0480003DEE3 /* RSWebViewController.m in Sources */,
 				00A4783419057D3B0041584F /* main.m in Sources */,
+				00244C8F1909B0B000FCEAC1 /* RSFollowing.m in Sources */,
 				00A4783819057D3B0041584F /* RSAppDelegate.m in Sources */,
 				00A4786719057ED30041584F /* RSSearchViewController.m in Sources */,
 				0016CF861906F857002F1D5C /* RSNetworkController.m in Sources */,
+				00C1A4C71909A1260064A857 /* LoginViewController.m in Sources */,
 				00A4785E19057DB10041584F /* RSRootMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

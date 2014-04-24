@@ -8,7 +8,6 @@
 
 #import "RSWebViewController.h"
 #import "RSSearchViewController.h"
-#import "RSUsersViewController.h"
 
 @interface RSWebViewController ()
 

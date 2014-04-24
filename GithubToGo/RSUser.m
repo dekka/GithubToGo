@@ -26,9 +26,6 @@
         self.avatarPath = [dictionary objectForKey:@"avatar_url"];
         
     }
-
-    
-    
     return self;
     
 }
@@ -68,3 +65,7 @@
 //    [self.searchResults addObject:user];
 //
 @end
+
+
+
+
